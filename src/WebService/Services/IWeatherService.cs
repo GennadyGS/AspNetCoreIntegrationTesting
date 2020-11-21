@@ -3,7 +3,7 @@ using WebService.Models;
 
 namespace WebService.Services
 {
-    internal interface IWeatherService
+    public interface IWeatherService
     {
         IEnumerable<WeatherForecast> GetForecast();
     }
