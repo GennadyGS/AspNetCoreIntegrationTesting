@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -8,17 +9,27 @@ namespace WebService
 {
     public sealed class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(
+            IConfiguration configuration,
+            params IModule[] modules)
         {
             Configuration = configuration;
+            Modules = modules;
         }
 
-        public IConfiguration Configuration { get; }
+        private IConfiguration Configuration { get; }
+
+        private IReadOnlyCollection<IModule> Modules { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            foreach (var module in Modules)
+            {
+                module.ConfigureServices(services, Configuration);
+            }
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
