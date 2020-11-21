@@ -10,7 +10,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\WebService.Api\WebService.Api.csproj" />
-    <ProjectReference Include="..\WebService.Infrastructure\WebService.Infrastructure.csproj" />
+    <ProjectReference Include="..\WebService.Infrastructure\WebService.Infrastructure.csproj">
+      <PrivateAssets>All</PrivateAssets>
+    </ProjectReference>
   </ItemGroup>
 
 </Project>

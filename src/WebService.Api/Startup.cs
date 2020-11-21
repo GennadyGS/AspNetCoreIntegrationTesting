@@ -1,35 +1,28 @@
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using WebService.Api.Contracts;
 
 namespace WebService.Api
 {
     public sealed class Startup
     {
-        public Startup(
-            IConfiguration configuration,
-            params IModule[] modules)
+        public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            Modules = modules;
+            ModulesManager = new ModulesManager(configuration);
         }
 
         private IConfiguration Configuration { get; }
 
-        private IReadOnlyCollection<IModule> Modules { get; }
+        private ModulesManager ModulesManager { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            foreach (var module in Modules)
-            {
-                module.ConfigureServices(services, Configuration);
-            }
+            ModulesManager.ConfigureServices(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +41,8 @@ namespace WebService.Api
             {
                 endpoints.MapControllers();
             });
+
+            ModulesManager.Configure(app);
         }
     }
 }

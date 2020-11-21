@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using WebService.Api;
-using WebService.Infrastructure;
 
 namespace WebService
 {
@@ -14,10 +13,6 @@ namespace WebService
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder => 
-                    webBuilder.UseStartup(context => 
-                        new Startup(
-                            context.Configuration,
-                            new InfrastructureModule())));
+                .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>());
     }
 }

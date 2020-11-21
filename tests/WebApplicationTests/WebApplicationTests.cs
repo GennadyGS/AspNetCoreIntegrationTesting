@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Testing;
 using WebApplicationTests.Utils;
 using WebService;
-using WebService.Api;
 using WebService.Api.Models;
 using Xunit;
 

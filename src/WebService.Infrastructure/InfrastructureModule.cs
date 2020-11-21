@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WebService.Api.Contracts;
@@ -11,6 +12,10 @@ namespace WebService.Infrastructure
         public void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
             services.AddTransient<IWeatherService, WeatherService>();
+        }
+
+        public void Configure(IApplicationBuilder app)
+        {
         }
     }
 }
