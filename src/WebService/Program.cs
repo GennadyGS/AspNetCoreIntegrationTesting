@@ -14,7 +14,8 @@ namespace WebService
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder.UseStartup(context => 
+                        new Startup(context.Configuration));
                 });
     }
 }
