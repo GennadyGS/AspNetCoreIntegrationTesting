@@ -15,7 +15,9 @@ namespace WebService
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup(context => 
-                        new Startup(context.Configuration));
+                        new Startup(
+                            context.Configuration,
+                            new InfrastructureModule()));
                 });
     }
 }
