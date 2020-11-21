@@ -1,6 +1,6 @@
 using System;
 
-namespace WebService.Models
+namespace WebService.Api.Models
 {
     public sealed class WeatherForecast
     {

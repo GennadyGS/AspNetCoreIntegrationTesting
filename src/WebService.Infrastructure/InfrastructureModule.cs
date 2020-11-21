@@ -1,10 +1,12 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using WebService.Services;
+using WebService.Api.Contracts;
+using WebService.Api.Services;
+using WebService.Infrastructure.Services;
 
-namespace WebService
+namespace WebService.Infrastructure
 {
-    internal class InfrastructureModule : IModule
+    public class InfrastructureModule : IModule
     {
         public void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {

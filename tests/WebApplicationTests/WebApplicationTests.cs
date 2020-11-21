@@ -4,8 +4,8 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Testing;
 using WebApplicationTests.Utils;
-using WebService;
-using WebService.Models;
+using WebService.Api;
+using WebService.Api.Models;
 using Xunit;
 
 namespace WebApplicationTests

@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace WebService
+namespace WebService.Api.Contracts
 {
     public interface IModule
     {

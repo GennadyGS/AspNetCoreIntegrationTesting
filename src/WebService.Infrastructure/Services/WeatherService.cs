@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using WebService.Models;
+using WebService.Api.Models;
+using WebService.Api.Services;
 
-namespace WebService.Services
+namespace WebService.Infrastructure.Services
 {
     internal sealed class WeatherService : IWeatherService
     {

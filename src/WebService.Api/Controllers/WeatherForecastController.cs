@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using WebService.Models;
-using WebService.Services;
+using WebService.Api.Models;
+using WebService.Api.Services;
 
-namespace WebService.Controllers
+namespace WebService.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]

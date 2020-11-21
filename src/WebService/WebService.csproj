@@ -8,5 +8,9 @@
     <PackageReference Include="Serilog" Version="2.10.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\WebService.Api\WebService.Api.csproj" />
+    <ProjectReference Include="..\WebService.Infrastructure\WebService.Infrastructure.csproj" />
+  </ItemGroup>
 
 </Project>

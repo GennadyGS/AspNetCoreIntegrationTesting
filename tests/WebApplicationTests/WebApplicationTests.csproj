@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\WebApplication\WebApplication.csproj" />
-    <ProjectReference Include="..\..\src\WebService\WebService.csproj" />
+    <ProjectReference Include="..\..\src\WebService.Api\WebService.Api.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using WebService.Models;
+using WebService.Api.Models;
 
-namespace WebService.Services
+namespace WebService.Api.Services
 {
     public interface IWeatherService
     {
