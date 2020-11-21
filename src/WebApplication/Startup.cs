@@ -8,7 +8,7 @@ using WebApplication.Services;
 
 namespace WebApplication
 {
-    public class Startup
+    public sealed class Startup
     {
         public Startup(IConfiguration configuration)
         {

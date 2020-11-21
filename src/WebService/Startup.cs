@@ -6,7 +6,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace WebService
 {
-    public class Startup
+    public sealed class Startup
     {
         public Startup(IConfiguration configuration)
         {
