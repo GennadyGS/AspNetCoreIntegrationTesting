@@ -9,7 +9,7 @@ namespace WebService.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private WeatherService Service { get; } = new WeatherService();
+        private IWeatherService Service { get; } = new WeatherService();
 
         [HttpGet]
         public IEnumerable<WeatherForecast> Get() => 

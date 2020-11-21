@@ -5,7 +5,7 @@ using WebService.Models;
 
 namespace WebService.Services
 {
-    internal sealed class WeatherService
+    internal sealed class WeatherService : IWeatherService
     {
         private static readonly string[] Summaries = 
         {
