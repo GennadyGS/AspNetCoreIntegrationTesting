@@ -14,12 +14,10 @@ namespace WebService
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
+                .ConfigureWebHostDefaults(webBuilder => 
                     webBuilder.UseStartup(context => 
                         new Startup(
                             context.Configuration,
-                            new InfrastructureModule()));
-                });
+                            new InfrastructureModule())));
     }
 }
