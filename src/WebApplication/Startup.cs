@@ -24,7 +24,7 @@ namespace WebApplication
             services
                 .AddHttpClient(
                     "WebService",
-                    c => c.BaseAddress = new Uri("http://localhost:11929"))
+                    c => c.BaseAddress = new Uri("https://localhost:44331"))
                 .AddTypedClient<IWeatherForecastClient, WeatherForecastClient>();
         }
 
