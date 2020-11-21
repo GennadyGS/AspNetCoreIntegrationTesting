@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Testing;
 using WebApplicationTests.Utils;
+using WebService;
 using WebService.Api;
 using WebService.Api.Models;
 using Xunit;
@@ -17,7 +18,7 @@ namespace WebApplicationTests
         {
             var webApplicationFactory = new CustomWebApplicationFactory();
             var webApplicationClient = webApplicationFactory.CreateClient();
-            var webServiceFactory = new WebApplicationFactory<Startup>();
+            var webServiceFactory = new WebApplicationFactory<Program>();
             var webServiceClient = webServiceFactory.CreateClient();
             webApplicationFactory.AddHttpClient("WebService", webServiceClient);
 
