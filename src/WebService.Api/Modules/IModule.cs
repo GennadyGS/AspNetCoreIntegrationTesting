@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace WebService.Api.Contracts
+namespace WebService.Api.Modules
 {
     public interface IModule
     {

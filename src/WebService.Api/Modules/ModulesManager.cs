@@ -5,9 +5,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WebService.Api.Configuration;
-using WebService.Api.Contracts;
 
-namespace WebService.Api
+namespace WebService.Api.Modules
 {
     internal sealed class ModulesManager
     {
@@ -18,8 +17,9 @@ namespace WebService.Api
         public ModulesManager(IConfiguration configuration)
         {
             Configuration = configuration;
-            Modules = configuration
-                .Get<ModulesOptions>().Modules
+            var modulesOptions = 
+                configuration.Get<ModulesOptions>().Modules ?? Array.Empty<ModuleOptions>();
+            Modules = modulesOptions
                 .Select(CreateModule)
                 .ToList();
         }

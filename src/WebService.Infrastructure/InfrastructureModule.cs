@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using WebService.Api.Contracts;
+using WebService.Api.Modules;
 using WebService.Api.Services;
 using WebService.Infrastructure.Services;
 
