@@ -19,12 +19,10 @@ namespace WebService.Infrastructure.Services
             Enumerable
                 .Range(1, 5)
                 .Select(index =>
-                    new WeatherForecast
-                    {
-                        Date = DateTime.Now.AddDays(index),
-                        TemperatureC = Random.Next(-20, 55),
-                        Summary = Summaries[Random.Next(Summaries.Length)],
-                    })
+                    new WeatherForecast(
+                        Date: DateTime.UtcNow.AddDays(index),
+                        TemperatureC: Random.Next(-20, 55),
+                        Summary: Summaries[Random.Next(Summaries.Length)]))
                 .ToArray();
     }
 }
