@@ -15,14 +15,13 @@ namespace WebApplicationTests
         [Fact]
         public async Task GetWeatherForecast_ShouldReturnSuccessResult()
         {
-            // Create application factories of master and utility service and 
-            // create corresponding HTTP clients from them
+            // Create application factories for master and utility services and corresponding HTTP clients
             var webApplicationFactory = new CustomWebApplicationFactory();
             var webApplicationClient = webApplicationFactory.CreateClient();
             var webServiceFactory = new WebApplicationFactory<Startup>();
             var webServiceClient = webServiceFactory.CreateClient();
-            // Mock dependency to utility service by replacing named HTTP client with 
-            // HTTP client of utility service
+            
+            // Mock dependency on utility service by replacing named HTTP client
             webApplicationFactory.AddHttpClient(clientName: "WebService", webServiceClient);
 
             var response = await webApplicationClient.GetAsync("weatherForecast");
