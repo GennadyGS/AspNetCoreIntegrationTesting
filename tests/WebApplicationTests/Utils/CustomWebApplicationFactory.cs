@@ -10,7 +10,7 @@ namespace WebApplicationTests.Utils
     internal sealed class CustomWebApplicationFactory
         : WebApplicationFactory<WebApplication.Startup>
     {
-        private readonly ConcurrentDictionary<string, HttpClient> HttpClients = 
+        private ConcurrentDictionary<string, HttpClient> HttpClients { get; } =
             new ConcurrentDictionary<string, HttpClient>();
 
         protected override void ConfigureWebHost(IWebHostBuilder builder)
