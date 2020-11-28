@@ -13,7 +13,7 @@ namespace WebApplicationTests
     public class WebApplicationTests
     {
         [Fact]
-        public async Task GetWeatherForecast_ShouldResultSuccessResult()
+        public async Task GetWeatherForecast_ShouldReturnSuccessResult()
         {
             var webApplicationFactory = new CustomWebApplicationFactory();
             var webApplicationClient = webApplicationFactory.CreateClient();
