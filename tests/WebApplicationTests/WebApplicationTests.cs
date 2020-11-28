@@ -24,8 +24,10 @@ namespace WebApplicationTests
             // Mock dependency on utility service by replacing named HTTP client
             webApplicationFactory.AddHttpClient(clientName: "WebService", webServiceClient);
 
+            // Perform test request
             var response = await webApplicationClient.GetAsync("weatherForecast");
 
+            // Assert the result
             response.EnsureSuccessStatusCode();
             var forecast = await response.Content.ReadAsAsync<IEnumerable<WeatherForecast>>();
             Assert.Equal(10, forecast.Count());

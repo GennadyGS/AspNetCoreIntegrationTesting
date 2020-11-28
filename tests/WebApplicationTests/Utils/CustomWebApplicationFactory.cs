@@ -26,7 +26,7 @@ namespace WebApplicationTests.Utils
         }
 
         // Replaces implementation of standard IHttpClientFactory interface with
-        // custom one providing replaced HTTP client from HttpClients dictionary 
+        // custom one providing replaced HTTP clients from HttpClients dictionary 
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
             base.ConfigureWebHost(builder);
