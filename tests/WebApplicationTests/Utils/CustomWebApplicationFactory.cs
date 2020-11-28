@@ -7,20 +7,15 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace WebApplicationTests.Utils
 {
-    internal sealed class CustomWebApplicationFactory
+    // Extends WebApplicationFactory allowing to replace named HTTP clients
+    internal sealed class CustomWebApplicationFactory 
         : WebApplicationFactory<WebApplication.Startup>
     {
+        // Contains replaced named HTTP clients
         private ConcurrentDictionary<string, HttpClient> HttpClients { get; } =
             new ConcurrentDictionary<string, HttpClient>();
 
-        protected override void ConfigureWebHost(IWebHostBuilder builder)
-        {
-            base.ConfigureWebHost(builder);
-            builder.ConfigureServices(services =>
-                services.AddSingleton<IHttpClientFactory>(
-                    new CustomHttpClientFactory(HttpClients)));
-        }
-
+        // Add replaced named HTTP client
         public void AddHttpClient(string clientName, HttpClient client)
         {
             if (!HttpClients.TryAdd(clientName, client))
@@ -28,6 +23,16 @@ namespace WebApplicationTests.Utils
                 throw new InvalidOperationException(
                     $"HttpClient with name {clientName} is already added");
             }
+        }
+
+        // Replaces implementation of standard IHttpClientFactory interface with
+        // custom one providing replaced HTTP client from HttpClients dictionary 
+        protected override void ConfigureWebHost(IWebHostBuilder builder)
+        {
+            base.ConfigureWebHost(builder);
+            builder.ConfigureServices(services =>
+                services.AddSingleton<IHttpClientFactory>(
+                    new CustomHttpClientFactory(HttpClients)));
         }
     }
 }
