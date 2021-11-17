@@ -21,10 +21,9 @@ namespace WebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            var serverUrl = Configuration.GetValue<string>("ServerUrl");
             services
-                .AddHttpClient(
-                    "WebService",
-                    c => c.BaseAddress = new Uri("https://localhost:44331"))
+                .AddHttpClient("WebService", c => c.BaseAddress = new Uri(serverUrl))
                 .AddTypedClient<IWeatherForecastClient, WeatherForecastClient>();
         }
 
