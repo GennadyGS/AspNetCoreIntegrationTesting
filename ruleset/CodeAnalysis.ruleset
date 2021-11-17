@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Production Assembly Rules" ToolsVersion="15.0">
+  <Rules AnalyzerId="SonarAnalyzer.CSharp" RuleNamespace="SonarAnalyzer.CSharp">
+    <Rule Id="S1135" Action="Info" />
+    <Rule Id="S1128" Action="Warning" />
+  </Rules>
+</RuleSet>
