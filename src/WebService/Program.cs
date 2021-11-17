@@ -3,7 +3,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace WebService
 {
-    public class Program
+    internal static class Program
     {
         public static void Main(string[] args)
         {

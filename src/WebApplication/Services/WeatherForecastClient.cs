@@ -16,14 +16,16 @@ namespace WebApplication.Services
 
         private HttpClient HttpClient { get; }
 
-        public async Task<IEnumerable<WeatherForecast>> GetForecastAsync() =>
-            (await GetForecastsAsync(HttpClient))
-                .Concat(await GetForecastsAsync(HttpClient));
-
-        private async Task<IEnumerable<WeatherForecast>> GetForecastsAsync(
-            HttpClient httpClient)
+        public async Task<IEnumerable<WeatherForecast>> GetForecastAsync()
         {
-            var responseMessage = await httpClient.GetAsync("weatherForecast");
+            var forecast1 = await GetForecastsAsync();
+            var forecast2 = await GetForecastsAsync();
+            return forecast1.Concat(forecast2);
+        }
+
+        private async Task<IEnumerable<WeatherForecast>> GetForecastsAsync()
+        {
+            var responseMessage = await HttpClient.GetAsync("weatherForecast");
             return await responseMessage
                 .CheckSuccess("Get weatherForecast")
                 .Content
