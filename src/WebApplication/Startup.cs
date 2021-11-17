@@ -21,10 +21,11 @@ namespace WebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            var serverUrl = Configuration.GetValue<string>("ServerUrl");
-            services
-                .AddHttpClient("WebService", c => c.BaseAddress = new Uri(serverUrl))
-                .AddTypedClient<IWeatherForecastClient, WeatherForecastClient>();
+
+            services.AddEndpointsApiExplorer();
+            services.AddSwaggerGen();
+
+            ConfigureHttpClient(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,6 +36,9 @@ namespace WebApplication
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSwagger();
+            app.UseSwaggerUI();
+
             app.UseRouting();
 
             app.UseAuthorization();
@@ -43,6 +47,14 @@ namespace WebApplication
             {
                 endpoints.MapControllers();
             });
+        }
+
+        private void ConfigureHttpClient(IServiceCollection services)
+        {
+            var serverUrl = Configuration.GetValue<string>("ServerUrl");
+            services
+                .AddHttpClient("WebService", c => c.BaseAddress = new Uri(serverUrl))
+                .AddTypedClient<IWeatherForecastClient, WeatherForecastClient>();
         }
     }
 }

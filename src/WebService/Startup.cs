@@ -19,6 +19,8 @@ namespace WebService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddEndpointsApiExplorer();
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -28,6 +30,9 @@ namespace WebService
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI();
 
             app.UseRouting();
 
