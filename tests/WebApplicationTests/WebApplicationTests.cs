@@ -8,29 +8,28 @@ using WebService;
 using WebService.Models;
 using Xunit;
 
-namespace WebApplicationTests
+namespace WebApplicationTests;
+
+public class WebApplicationTests
 {
-    public class WebApplicationTests
+    [Fact]
+    public async Task GetWeatherForecast_ShouldReturnSuccessResult()
     {
-        [Fact]
-        public async Task GetWeatherForecast_ShouldReturnSuccessResult()
-        {
-            // Create application factories for master and utility services and corresponding HTTP clients
-            var webApplicationFactory = new CustomWebApplicationFactory();
-            var webApplicationClient = webApplicationFactory.CreateClient();
-            var webServiceFactory = new WebApplicationFactory<Startup>();
-            var webServiceClient = webServiceFactory.CreateClient();
+        // Create application factories for master and utility services and corresponding HTTP clients
+        var webApplicationFactory = new CustomWebApplicationFactory();
+        var webApplicationClient = webApplicationFactory.CreateClient();
+        var webServiceFactory = new WebApplicationFactory<Startup>();
+        var webServiceClient = webServiceFactory.CreateClient();
             
-            // Mock dependency on utility service by replacing named HTTP client
-            webApplicationFactory.AddHttpClient(clientName: "WebService", webServiceClient);
+        // Mock dependency on utility service by replacing named HTTP client
+        webApplicationFactory.AddHttpClient(clientName: "WebService", webServiceClient);
 
-            // Perform test request
-            var response = await webApplicationClient.GetAsync("weatherForecast");
+        // Perform test request
+        var response = await webApplicationClient.GetAsync("weatherForecast");
 
-            // Assert the result
-            response.EnsureSuccessStatusCode();
-            var forecast = await response.Content.ReadAsAsync<IEnumerable<WeatherForecast>>();
-            Assert.Equal(10, forecast.Count());
-        }
+        // Assert the result
+        response.EnsureSuccessStatusCode();
+        var forecast = await response.Content.ReadAsAsync<IEnumerable<WeatherForecast>>();
+        Assert.Equal(10, forecast.Count());
     }
 }

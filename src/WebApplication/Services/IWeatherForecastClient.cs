@@ -2,10 +2,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using WebApplication.Models;
 
-namespace WebApplication.Services
+namespace WebApplication.Services;
+
+public interface IWeatherForecastClient
 {
-    public interface IWeatherForecastClient
-    {
-        Task<IEnumerable<WeatherForecast>> GetForecastAsync();
-    }
+    Task<IEnumerable<WeatherForecast>> GetForecastAsync();
 }

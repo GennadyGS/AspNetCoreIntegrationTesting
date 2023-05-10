@@ -1,16 +1,15 @@
 ﻿using System.Net.Http;
 
-namespace WebApplication.Utils
+namespace WebApplication.Utils;
+
+internal static class HttpResponseMessageExtensions
 {
-    internal static class HttpResponseMessageExtensions
+    public static HttpResponseMessage CheckSuccess(this HttpResponseMessage response, string description)
     {
-        public static HttpResponseMessage CheckSuccess(this HttpResponseMessage response, string description)
+        if (!response.IsSuccessStatusCode)
         {
-            if (!response.IsSuccessStatusCode)
-            {
-                throw new HttpRequestException($"{description} failed with status code {response.StatusCode}");
-            }
-            return response;
+            throw new HttpRequestException($"{description} failed with status code {response.StatusCode}");
         }
+        return response;
     }
 }
