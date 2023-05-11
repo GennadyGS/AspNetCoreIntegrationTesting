@@ -4,7 +4,6 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Testing;
 using WebApplicationTests.Utils;
-using WebService;
 using WebService.Models;
 using Xunit;
 
@@ -18,7 +17,7 @@ public sealed class WebApplicationTests
         // Create application factories for master and utility services and corresponding HTTP clients
         var webApplicationFactory = new CustomWebApplicationFactory();
         var webApplicationClient = webApplicationFactory.CreateClient();
-        var webServiceFactory = new WebApplicationFactory<Startup>();
+        var webServiceFactory = new WebApplicationFactory<Program>();
         var webServiceClient = webServiceFactory.CreateClient();
             
         // Mock dependency on utility service by replacing named HTTP client
