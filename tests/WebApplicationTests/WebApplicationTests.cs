@@ -10,7 +10,7 @@ using Xunit;
 
 namespace WebApplicationTests;
 
-public class WebApplicationTests
+public sealed class WebApplicationTests
 {
     [Fact]
     public async Task GetWeatherForecast_ShouldReturnSuccessResult()

@@ -5,7 +5,7 @@ using System.Net.Http;
 namespace WebApplicationTests.Utils;
 
 // Implements IHttpClientFactory by providing named HTTP clients directly from specified dictionary
-internal class CustomHttpClientFactory : IHttpClientFactory
+internal sealed class CustomHttpClientFactory : IHttpClientFactory
 {
     // Takes dictionary storing named HTTP clients in constructor
     public CustomHttpClientFactory(
