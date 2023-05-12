@@ -17,7 +17,8 @@ public sealed class WebApplicationTests
         // Create application factories for master and utility services and corresponding HTTP clients
         var webApplicationFactory = new CustomWebApplicationFactory();
         var webApplicationClient = webApplicationFactory.CreateClient();
-        var webServiceFactory = new WebApplicationFactory<Program>();
+        var webServiceFactory =
+            new WebApplicationFactory<WebService.Controllers.WeatherForecastController>();
         var webServiceClient = webServiceFactory.CreateClient();
             
         // Mock dependency on utility service by replacing named HTTP client

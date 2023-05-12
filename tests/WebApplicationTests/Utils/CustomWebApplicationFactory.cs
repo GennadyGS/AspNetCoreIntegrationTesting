@@ -9,11 +9,10 @@ namespace WebApplicationTests.Utils;
 
 // Extends WebApplicationFactory allowing to replace named HTTP clients
 internal sealed class CustomWebApplicationFactory 
-    : WebApplicationFactory<WebApplication.Startup>
+    : WebApplicationFactory<WebApplication.Controllers.WeatherForecastController>
 {
     // Contains replaced named HTTP clients
-    private ConcurrentDictionary<string, HttpClient> HttpClients { get; } =
-        new ConcurrentDictionary<string, HttpClient>();
+    private ConcurrentDictionary<string, HttpClient> HttpClients { get; } = new();
 
     // Add replaced named HTTP client
     public void AddHttpClient(string clientName, HttpClient client)
